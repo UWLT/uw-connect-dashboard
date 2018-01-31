@@ -3,7 +3,7 @@
 Keeping track of what's in the office
 
 
-#HOw to set up. 
+# How to set up. 
 
 Download/Clone the repository
 1. Download/Clone the repository
