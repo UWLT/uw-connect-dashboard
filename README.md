@@ -1,5 +1,5 @@
-###### DO NOT LEAVE THE USERNAME AND PASSCODE WHEN PUSHING IT TO THE REPOSITORY
-# uw-connect-dashboard
+# DO NOT LEAVE THE USERNAME AND PASSCODE WHEN PUSHING IT TO THE REPOSITORY
+## uw-connect-dashboard
 Keeping track of what's in the office
 
 
