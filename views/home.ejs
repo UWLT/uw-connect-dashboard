@@ -17,55 +17,28 @@
     <div class="container-3">
       <div class="container-2 req-inc box">
         <div class="container-1 req">
-          <p class=" count is-size-2" id="totaltickets"> <u>Total Tickets: <%=body[0].count + body[1].count + body[2].count%></u></p>
+          <p class=" count is-size-2" id="totaltickets"> <u>Total Requests: <strong class="is-size-1"><%=body[0].count + body[1].count + body[2].count%></strong></u></p>
           <div class="container-flex">
             <%for (var i = 0; i < 3; i++){ %>
             <div class="box req-box content">
-              <h1 class="title is-4"><%=name[i]%></h1>
-              <h2 class="subtitle is-4">Number of Tickets: <strong><%=body[i].count%></strong></h2>
-              <h1 class = "is-size-4"> Oldest Ticket:</h1>
-              <ul>
+              <h1 class="title is-size-3"><%=name[i]%></h1>
+              <h2 class="subtitle is-size-3">Number of Requests: <strong class="is-size-1"><%=body[i].count%></strong></h2>
+              <br>
+              <h1 class = "is-size-4"> Oldest Request:</h1>
+              <ul class = "is-size-5">
                 <%if (body[i].oldest != undefined) { %>
-                <li class="is-size-5">Last Modified On: <%= body[i].oldest.sys_updated_on %> </li>
+                <u class = "is-size-5">Number:</u> <i><%=body[i].oldest.number%></i>
+                <br><br>
+                <u class = "is-size-5">Last Modified On:</u> <i><%=body[i].oldest.sys_updated_on%></i>
+                <br><br>
+                <u class = "is-size-5">Description:</u> <i><%=body[i].oldest.short_description%></i>
+                <br><br>
                 <%} else {%>
                 <li class="is-size-5"> N/A</li>
                 <%}%>
               </ul>
-              <%if (body[i].oldest != undefined) {%>
-              <h1 class = "is-size-4">Ticket Details:</h1>
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Req Number</th>
-                    <th>State</th>
-                    <th>Short Description</th>
-                  </tr>
-                </thead>
-                <tbody class="tickets">
-                  <tr>
-                      <th><%=body[i].oldest.number%></th>
-                      <%if (body[i].oldest.state == 1) {%>
-                        <th>New</th>
-                      <%} else {%>
-                        <th>Open</th>
-                      <%}%>
-                      <th><%=body[i].oldest.short_description%></th>
-                  </tr>
-                </tbody>
-              </table>
-              <%} %>
             </div>
             <%}%>
-          </div>
-          <div class="container-flex">
-            <div class=" box old-box content">
-              <h1 class= "title"><u>Oldest Ticket:</u> <i></i></h1>
-              <h2 class="subtitle is-5">
-                <u>Description:</u> <i></i>
-                <br>
-                <u>State:</u> <i></i>
-              </h2>
-            </div>
           </div>
         </div>
         <br>
