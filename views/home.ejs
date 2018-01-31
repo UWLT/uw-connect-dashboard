@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/master.css">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+
+    <div class="container-3">
+      <div class="container-2 req-inc box">
+        <div class="container-1 req">
+          <p class=" count is-size-2" id="totaltickets"> <u>Total Tickets: <%=body[0].count + body[1].count + body[2].count%></u></p>
+          <div class="container-flex">
+            <%for (var i = 0; i < 3; i++){ %>
+            <div class="box req-box content">
+              <h1 class="title is-4"><%=name[i]%></h1>
+              <h2 class="subtitle is-4">Number of Tickets: <strong><%=body[i].count%></strong></h2>
+              <h1 class = "is-size-4"> Oldest Ticket:</h1>
+              <ul>
+                <%if (body[i].oldest != undefined) { %>
+                <li class="is-size-5">Last Modified On: <%= body[i].oldest.sys_updated_on %> </li>
+                <%} else {%>
+                <li class="is-size-5"> N/A</li>
+                <%}%>
+              </ul>
+              <%if (body[i].oldest != undefined) {%>
+              <h1 class = "is-size-4">Ticket Details:</h1>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Req Number</th>
+                    <th>State</th>
+                    <th>Short Description</th>
+                  </tr>
+                </thead>
+                <tbody class="tickets">
+                  <tr>
+                      <th><%=body[i].oldest.number%></th>
+                      <%if (body[i].oldest.state == 1) {%>
+                        <th>New</th>
+                      <%} else {%>
+                        <th>Open</th>
+                      <%}%>
+                      <th><%=body[i].oldest.short_description%></th>
+                  </tr>
+                </tbody>
+              </table>
+              <%} %>
+            </div>
+            <%}%>
+          </div>
+          <div class="container-flex">
+            <div class=" box old-box content">
+              <h1 class= "title"><u>Oldest Ticket:</u> <i></i></h1>
+              <h2 class="subtitle is-5">
+                <u>Description:</u> <i></i>
+                <br>
+                <u>State:</u> <i></i>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="container-1 inc">
+          <p class=" count is-size-2" id="totaltickets"> <u>Total Incidents: <%=body[3].count + body[4].count%></u></p>
+          <div class="container-flex">
+            <%for (var i = 3; i < 5; i++){ %>
+            <div class="box inc-box content">
+              <h1 class="title "><%=name[i]%></h1>
+              <h2 class="subtitle is-3">Number of Incidents: <strong><%=body[i].count%></strong></h2>
+              <h1 class = "is-size-4"> Oldest Incident:</h1>
+              <ul>
+                <%if (body[i].oldest != undefined) { %>
+                <li class="is-size-5">Last Modified On: <%= body[i].oldest.sys_updated_on %> </li>
+                <%} else {%>
+                <li class="is-size-5"> N/A</li>
+                <%}%>
+              </ul>
+              <%if (body[i].oldest != undefined) {%>
+              <h1 class = "is-size-4">Incident Details:</h1>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Req Number</th>
+                    <th>State</th>
+                    <th>Short Description</th>
+                  </tr>
+                </thead>
+                <tbody class="tickets">
+                  <tr>
+                      <th><%=body[i].oldest.number%></th>
+                      <%if (body[i].oldest.state == 1) {%>
+                        <th>New</th>
+                      <%} else {%>
+                        <th>Open</th>
+                      <%}%>
+                      <th><%=body[i].oldest.short_description.substring(0,50)%></th>
+                  </tr>
+                </tbody>
+              </table>
+              <%} %>
+            </div>
+            <%}%>
+          </div>
+          <div class="container-flex">
+            <div class=" box old-box content">
+              <h1 class= "title"><u>Oldest Incident:</u> <i></i></h1>
+              <h2 class="subtitle is-5">
+                <u>Description:</u> <i></i>
+                <br>
+                <u>State:</u> <i></i>
+              </h2>
+            </div>
+          </div>
+      </div>
+      </div>
+      <div class="container-2 consult box">
+        <h1 class="title">Upcoming Consultations:</h1>
+        <div class="container-flex consult-flex">
+          <%body[5].forEach(function(consult) { %>
+              <div class="box consult-box content">
+                <p class="is-size-4"><%=consult.number%></p>
+                <ul>
+                  <li >Consultation Date: <strong><%=consult.due_date%></strong></li>
+                  <li>Assigned to: <strong><%=consult.assigned_to.link%></strong></li>
+                  <li>Description: <strong><%=consult.short_description%></strong></li>
+                </ul>
+              </div>
+          <% }) %>
+        </div>
+      </div>
+
+    <script src= "js/dashboard.js" type="text/javascript"></script>
+  </body>
+</html>

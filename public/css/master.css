@@ -1,0 +1,52 @@
+
+.container-3 {
+  display:flex;
+  margin:0;
+  height:100vh;
+}
+.container-1 {
+  height:45vh;
+}
+.container-flex {
+  display: flex;
+  padding: 0 15px;
+}
+
+.consult-flex {
+  flex-wrap: wrap;
+}
+.req-box {
+  margin: 15px;
+  height: 28vh;
+  width:23vw;
+}
+.inc-box {
+  margin: 15px;
+  height: 30vh;
+  width:46vw;
+}
+.old-box {
+  margin:15px;
+  margin-top:0;
+  width:69vw;
+  height:10vh;
+}
+
+.req-inc {
+  width:70vw;
+  margin:15px;
+  padding: 0;
+}
+.consult {
+  width:30vw;
+  margin: 15px;
+  margin-left: 0px;
+}
+.consult-box {
+  width: 24vw;
+}
+
+.count {
+  padding: 0px 30px;
+  margin-bottom: 0;
+}
